@@ -1,7 +1,11 @@
 import random
 
-emojis= {"r": "🪨", "s": "✂️", "p": "📃"}
-choices =('r', 'p', 's')
+ROCK= "r"
+SCISSORS= "s"
+PAPER= "p"
+emojis= {ROCK: "🪨",SCISSORS: "✂️", PAPER: "📃"}
+
+choices =tuple(emojis.keys())
 
 def get_user_choice():
     while True:
@@ -18,11 +22,11 @@ def display_choices(user_choice , computer_choice):
 def determine_winner(user_choice,computer_choice):
     if user_choice == computer_choice:
         print('Tie!')
-    elif user_choice == 'r' and computer_choice =='s':
+    elif user_choice == ROCK and computer_choice ==SCISSORS:
         print("You Win")
-    elif user_choice == 's' and computer_choice =="p":
+    elif user_choice == SCISSORS and computer_choice ==PAPER:
         print("You Win")
-    elif user_choice == 'p' and computer_choice == 'r':
+    elif user_choice == PAPER and computer_choice == ROCK:
         print ("You win")
 
     else:
