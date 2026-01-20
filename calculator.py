@@ -2,7 +2,7 @@ import tkinter
 
 button_values = [
     ["AC","+/-","%","÷"],
-    ["7","8","9","x"],
+    ["7", "8",  "9","×"],
     ["4", "5", "6", "-"],
     ["1", "2", "3", "+"],
     ["0", ".", "√", "="]
@@ -12,7 +12,7 @@ right_symbols = ["÷", "×", "-", "+", "="]
 top_symbols = ["AC", "+/-", "%"]
 
 row_ct = len(button_values) #5
-column_ct= len(button_values) #4
+column_ct= len(button_values[0]) #4
 
 color_light_gray = "#1D3075"
 color_black ="#560763"
@@ -24,4 +24,29 @@ color_white= "white"
 window= tkinter.Tk()
 window.title("Calculator")
 window.resizable(False, False)
+
+frame= tkinter.Frame(window)
+label= tkinter.Label(frame,text="0", font=("Arial",45), background= color_black,
+                     foreground= color_white, anchor="e")
+
+label.grid(row=0, column=0, columnspan= column_ct, sticky="we")
+
+for row in range(row_ct):
+    for column in range(column_ct):
+        value= button_values [row][column]
+        button= tkinter.Button(frame, text=value, font=("Arial", 30),
+                               width= column_ct-1, height=1,
+                               command= lambda value =value: button_clicked(value))
+        if value in top_symbols:
+            button.config(foreground=color_black, background=color_dark_gray)
+        elif value in right_symbols:
+            button.config(foreground=color_white, background= color_orange)
+        else:
+            button.config(foreground=color_white, background=color_dark_gray)
+        button.grid(row=row+1, column=column)
+frame.pack()
+
+def button_clicked(value):
+    pass
+
 window.mainloop()
