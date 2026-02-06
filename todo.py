@@ -40,7 +40,7 @@ while True:
     print("4. Exit")
     print("5. clear all tasks")
 
-    choice = input("Choose an option (1-4): ")
+    choice = input("Choose an option (1-5): ")
 
     if choice == "1":
         add_task()
@@ -56,3 +56,4 @@ while True:
         print("Your all tasks have been cleared ")
     else:
         print("Invalid option Please try again")
+
