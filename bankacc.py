@@ -12,7 +12,8 @@ class bankAccount:
             self.balance += amount
             print(f"deposited  ${amount:.2f} successfully")
 
-        
+    def veryfy_pin(self, entered_pin):
+        return self.pin == entered_pin
 
     def withdraw(self,amount):
         if amount <=0:
@@ -30,8 +31,27 @@ class bankAccount:
 
 name = input("Enter your name: ")
 initial_balance = float(input("Enter initial balance: $"))
-account = bankAccount(name, initial_balance)
+pin = int(input("Set a 4 ddigit PIN: "))
+account = bankAccount(name, initial_balance,pin)
 is_running= True
+
+attempts= 3
+
+while attempts > 0:
+    entered_pin = int(input("Enter your PIN: "))
+    if account.verify_pin(entered_pin):
+        print("pin verified")
+        break
+    else:
+        attempts -= 1
+        print(f"Wrong PIN ,Attempts left: {attempts}")
+
+if attempts == 0:
+    print("Too many wrong attempts. Account locked for some securityy reasason")
+    exit()
+
+
+
 
 while is_running:
     print("Welcome to the BAnk account system")
@@ -49,18 +69,18 @@ while is_running:
             amount = float(input("Enter deposit amount: $"))
             account.deposit(amount)
         except ValueError:
-            print("Invalid amount. Please enter a number.")
+            print("INVALID AMOUNT. Please enter a number.")
     elif choice == "3":
         try:
             amount = float(input("Enter withdraw amount: $"))
             account.withdraw(amount)
         except ValueError:
-            print("Invalid amount. Please enter a number.")
+            print("INVALID AMOUNT. Please enter a number.")
     elif choice == "4":
         print(f"Thank you {account.name}. Goodbye!")
         is_running = False
     else:
-        print("Invalid choice. Please select 1-4.")
+        print("INVALID CHOICE. Please select 1-4.")
 
 
 
