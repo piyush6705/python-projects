@@ -40,6 +40,7 @@ def main():
         print("3. Delete Student")
         print("4. View Students")
         print("5. Exit")
+        
 
         choice  = int(input("Enter your choice(1-5):"))
 
@@ -60,8 +61,9 @@ def main():
             print("CLOSING THE PROGRAM. Goodbye!")
             break
         else:
-            print("Invalid choice. ")
+            print("INVALID CHOICE. ")
     
 
+                                            
 if __name__ == "__main__":
     main()
